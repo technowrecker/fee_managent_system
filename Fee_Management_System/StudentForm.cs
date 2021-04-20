@@ -17,21 +17,9 @@ namespace Fee_Management_System
         {
 
 
-            loadStudents();
             loadstaff();
-
-
+            loadStudents();
             resetForm();
-        }
-
-        private void setGender()
-        {
-            malefemale.SelectedIndex = 0;
-        }
-
-        private void setClass()
-        {
-            classes.SelectedIndex = 0;
         }
 
         private void loadstaff()
@@ -65,8 +53,6 @@ namespace Fee_Management_System
             da.Fill(dt);
             dgvStudents.DataSource = dt;
             dgvStudents.Refresh();
-
-
             con.Close();
         }
 
@@ -144,9 +130,8 @@ namespace Fee_Management_System
                         MessageBox.Show("Something Went Wrong!", "Invalid Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception exp)
+                catch (Exception)
                 {
-                    MessageBox.Show(exp.ToString());
 
                 }
 
@@ -154,7 +139,7 @@ namespace Fee_Management_System
         }
 
         private bool isvalidate()
-        { /*
+        { 
             if(txtName.Text.Trim() == "")
             {
                 MessageBox.Show("Please provide Name of the student!", "Invalid Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -167,15 +152,16 @@ namespace Fee_Management_System
                 txtFatherName.Focus();
                 return false;
             }
-            if(txtCaste.Text.Trim() == "")
+            if (txtCaste.Text.Trim() == "")
             {
                 MessageBox.Show("Please provide Caste of the student!", "Invalid Caste", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCaste.Focus();
                 return false;
             }
             else
-            { */
-            return true;
+            {
+                return true;
+            }
 
         }
 
@@ -388,9 +374,8 @@ namespace Fee_Management_System
 
                 con.Close();
             }
-            catch (Exception es)
+            catch (Exception)
             {
-                MessageBox.Show(es.ToString());
 
             }
         }
