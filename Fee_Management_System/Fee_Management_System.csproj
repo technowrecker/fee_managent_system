@@ -71,9 +71,11 @@
       <HintPath>..\packages\Dapper.2.0.78\lib\net461\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -170,6 +172,11 @@
     <Compile Include="Replace_Staff.Designer.cs">
       <DependentUpon>Replace_Staff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\DataSet_Print_Fee.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet_Print_Fee.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SlipForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +256,7 @@
     <EmbeddedResource Include="Replace_Staff.resx">
       <DependentUpon>Replace_Staff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\report.rdlc" />
     <EmbeddedResource Include="SlipForm.resx">
       <DependentUpon>SlipForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +283,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Report\DataSet_Print_Fee.xsc">
+      <DependentUpon>DataSet_Print_Fee.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DataSet_Print_Fee.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet_Print_Fee.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\DataSet_Print_Fee.xss">
+      <DependentUpon>DataSet_Print_Fee.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -288,6 +307,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

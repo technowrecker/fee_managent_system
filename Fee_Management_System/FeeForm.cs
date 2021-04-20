@@ -1,13 +1,28 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fee_Management_System
 {
     public partial class FeeForm : Form
     {
+
+
+        private static List<Stream> m_streams;
+        private static int m_currentPageIndex = 0;
+
         public FeeForm()
         {
             InitializeComponent();
@@ -306,7 +321,7 @@ namespace Fee_Management_System
 
 
                 // code for dgv rows
-
+                int i = 0;
                 foreach (DataGridViewRow dgvRow in students_dgv.Rows)
                 {
                     if (dgvRow.Cells[0].Value != null && Convert.ToBoolean(dgvRow.Cells[0].Value))
@@ -315,11 +330,18 @@ namespace Fee_Management_System
                         if (isPaid(Convert.ToInt32(dgvRow.Cells[1].Value), month))
                         {
                             payStudentFee(id, month, amount);
+                            i = i + 1;
                         }
                     }
+
                 }
+                    if(i != 0)
+                    {
+                        MessageBox.Show(i.ToString() + " student(s) paid successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
             }
         }
+
 
         private void print_button_Click(object sender, EventArgs e)
         {
@@ -352,17 +374,42 @@ namespace Fee_Management_System
                         int id = Convert.ToInt32(dgvRow.Cells[1].Value.ToString());
                         if (isPaid(Convert.ToInt32(dgvRow.Cells[1].Value), month))
                         {
-                            if (Convert.ToBoolean(payStudentFee(id, month, amount)))
+                            int fee_id = payStudentFee(id, month, amount);
+                            if (Convert.ToBoolean(fee_id))
                             {
-                                PrintSlipData.feeId = id;
-                                PrintSlipData.studentName = dgvRow.Cells[2].Value.ToString();
-                                PrintSlipData.fatherName = dgvRow.Cells[3].Value.ToString();
-                                PrintSlipData.studentClass = dgvRow.Cells[4].Value.ToString();
-                                PrintSlipData.feeMonth = month;
-                                PrintSlipData.amount = amount.ToString();
+                                string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
+                                SqlConnection con = new SqlConnection(constr);
+                                con.Open();
+                                string query = "select fee_id 'id' , date,  name 'studentName', father_name 'fatherName', class 'className', fee_price 'fee', fee_month 'feeMonth' from student s, fee f where s.id = f.id and fee_id = '" + fee_id + "' ";
+                                SqlDataAdapter da = new SqlDataAdapter(query, con);
+                                DataTable dt = new DataTable();
+                                da.Fill(dt);
 
-                                SlipForm cf = new SlipForm();
-                                cf.ShowDialog();
+                                try
+                                {
+                                    LocalReport report = new LocalReport();
+                                    var path = Path.GetDirectoryName(Application.ExecutablePath);
+                                    var fullPath = Path.GetDirectoryName(Application.ExecutablePath).Remove(path.Length - 12) + @"\Report\report.rdlc";
+                                    report.ReportPath = fullPath;
+                                    report.DataSources.Add(new ReportDataSource("DataSet1", dt));
+
+                                
+                                    PrintToPrinter(report);
+                                }
+                                catch (Exception)
+                                {
+                                    LocalReport report = new LocalReport();
+                                    var path = Path.GetDirectoryName(Application.ExecutablePath);
+                                    var fullPath = Path.GetDirectoryName(Application.ExecutablePath).Remove(path.Length - 10) + @"\Report\report.rdlc";
+                                    report.ReportPath = fullPath;
+                                    report.DataSources.Add(new ReportDataSource("DataSet1", dt));
+
+
+                                    PrintToPrinter(report);
+                                }
+
+
+
                             }
                             else
                             {
@@ -372,6 +419,97 @@ namespace Fee_Management_System
                     }
                 }
 
+            }
+        }
+
+
+
+
+        public static void PrintToPrinter(LocalReport report)
+        {
+            Export(report);
+
+        }
+
+        public static void Export(LocalReport report, bool print = true)
+        {
+            string deviceInfo =
+             @"<DeviceInfo>
+                <OutputFormat>EMF</OutputFormat>
+                <PageWidth>4in</PageWidth>
+                <PageHeight>5.5in</PageHeight>
+                <MarginTop>0in</MarginTop>
+                <MarginLeft>0in</MarginLeft>
+                <MarginRight>0in</MarginRight>
+                <MarginBottom>0in</MarginBottom>
+            </DeviceInfo>";
+            Warning[] warnings;
+            m_streams = new List<Stream>();
+            report.Render("Image", deviceInfo, CreateStream, out warnings);
+            foreach (Stream stream in m_streams)
+                stream.Position = 0;
+
+            if (print)
+            {
+                Print();
+            }
+        }
+
+
+        public static void Print()
+        {
+            if (m_streams == null || m_streams.Count == 0)
+                throw new Exception("Error: no stream to print.");
+            PrintDocument printDoc = new PrintDocument();
+            if (!printDoc.PrinterSettings.IsValid)
+            {
+                throw new Exception("Error: cannot find the default printer.");
+            }
+            else
+            {
+                printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
+                m_currentPageIndex = 0;
+                printDoc.Print();
+            }
+        }
+
+        public static Stream CreateStream(string name, string fileNameExtension, Encoding encoding, string mimeType, bool willSeek)
+        {
+            Stream stream = new MemoryStream();
+            m_streams.Add(stream);
+            return stream;
+        }
+
+        public static void PrintPage(object sender, PrintPageEventArgs ev)
+        {
+            Metafile pageImage = new
+               Metafile(m_streams[m_currentPageIndex]);
+
+            // Adjust rectangular area with printer margins.
+            Rectangle adjustedRect = new Rectangle(
+                ev.PageBounds.Left - (int)ev.PageSettings.HardMarginX,
+                ev.PageBounds.Top - (int)ev.PageSettings.HardMarginY,
+                ev.PageBounds.Width,
+                ev.PageBounds.Height);
+
+            // Draw a white background for the report
+            ev.Graphics.FillRectangle(Brushes.White, adjustedRect);
+
+            // Draw the report content
+            ev.Graphics.DrawImage(pageImage, adjustedRect);
+
+            // Prepare for the next page. Make sure we haven't hit the end.
+            m_currentPageIndex++;
+            ev.HasMorePages = (m_currentPageIndex < m_streams.Count);
+        }
+
+        public static void DisposePrint()
+        {
+            if (m_streams != null)
+            {
+                foreach (Stream stream in m_streams)
+                    stream.Close();
+                m_streams = null;
             }
         }
 
