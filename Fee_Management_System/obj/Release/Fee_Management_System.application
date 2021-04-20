@@ -4,17 +4,17 @@
   <description asmv2:publisher="MUHAMMAD RASHID" asmv2:product="Fee_Management_System" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" minimumRequiredVersion="1.10.2.2" co.v1:createDesktopShortcut="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Fee_Management_System.exe.manifest" size="3539">
+    <dependentAssembly dependencyType="install" codebase="Fee_Management_System.exe.manifest" size="4170">
       <assemblyIdentity name="Fee_Management_System.exe" version="10.4.6.16" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>P6GuGSQgTT5iYV1ExafVQGQ4tgvuTpvOIhfJA9nE07s=</dsig:DigestValue>
+        <dsig:DigestValue>XrA8R8y2Q/PxDI7Lzu/7xgdFGLcXYXzhaHmYsAU/5Mw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

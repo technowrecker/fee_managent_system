@@ -13,16 +13,6 @@ namespace Fee_Management_System
             InitializeComponent();
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FeeForm_Load(object sender, EventArgs e)
         {
             loadStaff();
@@ -30,9 +20,16 @@ namespace Fee_Management_System
             setGender();
             loadmonths();
 
+            DataGridViewCheckBoxColumn cbxclm = new DataGridViewCheckBoxColumn();
+            cbxclm.Name = "X";
+            cbxclm.HeaderText = "";
+            cbxclm.Width = 30;
+            students_dgv.Columns.Insert(0, cbxclm);
+
+
             try
             {
-                string month = cbxMonths.SelectedItem.ToString();
+                string month = cbxMonth.SelectedItem.ToString();
                 loadUnpaidStudentsByMonth(month);
             }
             catch (Exception)
@@ -40,22 +37,17 @@ namespace Fee_Management_System
                 loadAllStudents();
             }
 
-            DataGridViewCheckBoxColumn cbxclm = new DataGridViewCheckBoxColumn();
-            cbxclm.Name = "X";
-            cbxclm.HeaderText = "";
-            cbxclm.Width = 30;
-            dgvStudents.Columns.Insert(0, cbxclm);
-
+            
         }
 
         private void setGender()
         {
-            malefemale.SelectedIndex = 0;
+            cbxGender.SelectedIndex = 0;
         }
 
         private void setClasses()
         {
-            cbxclasses.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
         }
 
         private void loadStaff()
@@ -69,12 +61,12 @@ namespace Fee_Management_System
             while (dr.Read())
             {
 
-                SelectInstructor.Items.Add(dr["instructor"].ToString());
+                cbxInstructor.Items.Add(dr["instructor"].ToString());
 
             }
             try
             {
-                SelectInstructor.SelectedIndex = 0;
+                cbxInstructor.SelectedIndex = 0;
             }
             catch (Exception) { }
             con.Close();
@@ -83,7 +75,7 @@ namespace Fee_Management_System
 
         private void loadmonths()
         {
-            cbxMonths.Items.Clear();
+            cbxMonth.Items.Clear();
             string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
             con.Open();
@@ -92,11 +84,11 @@ namespace Fee_Management_System
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                cbxMonths.Items.Add(dr["months"].ToString());
+                cbxMonth.Items.Add(dr["months"].ToString());
             }
             try
             {
-                cbxMonths.SelectedIndex = 0;
+                cbxMonth.SelectedIndex = 0;
             }
             catch (Exception) { }
 
@@ -104,72 +96,26 @@ namespace Fee_Management_System
 
         }
 
-        
-
         private void loadstudents()
         {
             string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-            string query = "SELECT id 'ID',  name 'Student Name' ,father_name 'Father Name', class 'Class', instructedby 'Instructed_By', gender 'Gender', caste 'Caste' from student where id not in( select id from fee where fee_month = @feeMonth ) and session is null ";
+            string query = "SELECT id 'ID',  name 'Student Name' ,father_name 'Father Name', class 'Class', instructedby 'Instructed_By', gender 'Gender', caste 'Caste' from student where session is null ";
             SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter("feeMonth", cbxMonths.SelectedItem.ToString()));
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            dgvStudents.DataSource = dt;
-            dgvStudents.Refresh();
+            students_dgv.DataSource = dt;
+            students_dgv.Refresh();
             con.Close();
         }
 
         private void resetform()
         {
-            txtFee.Clear();
-            txtnewMonth.Clear();
+            txtStudentFee.Clear();
+            txtAddMonth.Clear();
             loadmonths();
-        }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            loadDesiredData();
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            if (isvalidated())
-            {
-                string month;
-                int amount = Convert.ToInt32(txtFee.Text);
-
-                // code for months
-                if (txtnewMonth.Text.Trim().Length == 0)
-                {
-                    month = cbxMonths.SelectedItem.ToString();
-                }
-                else
-                {
-                    month = txtnewMonth.Text.Trim().ToString();
-                    if (!addNewMonth(month))
-                    {
-                        MessageBox.Show("New month is not added");
-                    }
-                }
-
-
-                // code for dgv rows
-
-                foreach (DataGridViewRow dgvRow in dgvStudents.Rows)
-                {
-                    if(dgvRow.Cells[0].Value != null && Convert.ToBoolean(dgvRow.Cells[0].Value))
-                    {
-                        int id = Convert.ToInt32(dgvRow.Cells[1].Value.ToString());
-                        if (isPaid(Convert.ToInt32(dgvRow.Cells[1].Value), month))
-                        {
-                            payStudentFee(id, month, amount);
-                          }
-                    }
-                }
-            }
         }
 
         private int payStudentFee(int id, string month, int amount)
@@ -213,65 +159,6 @@ namespace Fee_Management_System
             }
         }
 
-        private void btnContinue_Click(object sender, EventArgs e)
-        {
-            if (isvalidated())
-            {
-                string month;
-                int amount = Convert.ToInt32(txtFee.Text);
-
-                // code for months
-                if (txtnewMonth.Text.Trim().Length == 0)
-                {
-                    month = cbxMonths.SelectedItem.ToString();
-                }
-                else
-                {
-                    month = txtnewMonth.Text.Trim().ToString();
-                    if (!addNewMonth(month))
-                    {
-                        MessageBox.Show("New month is not added");
-                    }
-                }
-
-
-                // code for dgv rows
-
-                foreach (DataGridViewRow dgvRow in dgvStudents.Rows)
-                {
-                    if (dgvRow.Cells[0].Value != null && Convert.ToBoolean(dgvRow.Cells[0].Value))
-                    {
-                        int id = Convert.ToInt32(dgvRow.Cells[1].Value.ToString());
-                        if (isPaid(Convert.ToInt32(dgvRow.Cells[1].Value), month))
-                        {
-                            if(Convert.ToBoolean(payStudentFee(id, month, amount))){
-                                PrintSlipData.feeId = id;
-                                PrintSlipData.studentName = dgvRow.Cells[2].Value.ToString();
-                                PrintSlipData.fatherName = dgvRow.Cells[3].Value.ToString();
-                                PrintSlipData.studentClass = dgvRow.Cells[4].Value.ToString();
-                                PrintSlipData.feeMonth = month;
-                                PrintSlipData.amount = amount.ToString();
-
-                                SlipForm cf = new SlipForm();
-                                cf.ShowDialog();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Some thing went wrong!");
-                            }
-                        }
-                    }
-                }
-
-            }
-        }
-
-        private void printSlip()
-        {
-            SlipForm sdf = new SlipForm();
-            sdf.ShowDialog();
-        }
-
         private bool isPaid(int id, string month)
         {
             int studentID = id;
@@ -312,19 +199,13 @@ namespace Fee_Management_System
 
         }
 
-        private void showslip()
-        {
-            SlipForm sf = new SlipForm();
-            sf.ShowDialog();
-        }
-
         private bool isvalidated()
         {
 
-            if (txtFee.Text == "")
+            if (txtStudentFee.Text == "")
             {
                 MessageBox.Show("Please add student fee!", "Invalid fee", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtFee.Focus();
+                txtStudentFee.Focus();
                 return false;
             }
             else
@@ -333,49 +214,11 @@ namespace Fee_Management_System
             }
         }
 
-        private void txtFee_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsNumber(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void addStudentsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            StudentForm sf = new StudentForm(); sf.ShowDialog();
-        }
-
-        private void manageStaffToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FeeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
-        private void checkPaidStudentsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PaidStudents ps = new PaidStudents(); ps.ShowDialog();
-        }
-
-        private void checkUnPaidStudentsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Unpaid_Students us = new Unpaid_Students(); us.ShowDialog();
-        }
-
-        private void checkDailyFeeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DailyFee df = new DailyFee(); df.ShowDialog();
-        }
-
-        private void updateClassesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ClassForm cf = new ClassForm();
-            cf.ShowDialog();
-        }
 
         private void loadDesiredData()
         {
@@ -385,125 +228,14 @@ namespace Fee_Management_System
 
             string query = "SELECT id 'ID',  name 'Student Name' ,father_name 'Father Name', caste 'Caste', class 'Class', instructedby 'Instructed_By', gender 'Gender' from student where (name like @name or father_name like @name or caste like @name) and session is null ";
             SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter("name", "%" + txtSearch.Text.ToString() + "%"));
+            cmd.Parameters.Add(new SqlParameter("name", "%" + search.Text.ToString() + "%"));
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            dgvStudents.DataSource = dt;
-            dgvStudents.Refresh();
+            students_dgv.DataSource = dt;
+            students_dgv.Refresh();
             con.Close();
-        }
-
-        private void SelectInstructor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
-            SqlConnection con = new SqlConnection(constr);
-            con.Open();
-            string query = "SELECT  name 'Student Name' ,father_name 'Father Name', class 'Class', instructedby 'Instructed_By', gender 'Gender', caste 'Caste' from student where instructedby = @instructedby  and  session is null ";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter("instructedby", SelectInstructor.SelectedItem.ToString()));
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgvStudents.DataSource = dt;
-            dgvStudents.Refresh();
-            con.Close();
-
-        }
-
-        private void loaddata()
-        {
-
-            string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
-            SqlConnection con = new SqlConnection(constr);
-            con.Open();
-            string query = "SELECT id 'ID',   name 'Student Name' ,father_name 'Father Name', class 'Class', instructedby 'Instructed_By', gender 'Gender', caste 'Caste' from student where instructedby = @instructedby and  session is null ";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter("instructedby", SelectInstructor.SelectedItem.ToString()));
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgvStudents.DataSource = dt;
-            dgvStudents.Refresh();
-            con.Close();
-        }
-
-        private void cbxclasses_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            malefemale.SelectedIndex = 0;
-            string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
-            SqlConnection con = new SqlConnection(constr);
-            con.Open();
-            string query = "SELECT id 'ID',  name 'Student Name' ,father_name 'Father Name', class 'Class', instructedby 'Instructed_By', gender 'Gender', caste 'Caste' from student where  class = @c and gender = @g and  session is null ";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter("c", cbxclasses.SelectedItem.ToString()));
-            cmd.Parameters.Add(new SqlParameter("g", malefemale.SelectedItem.ToString()));
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgvStudents.DataSource = dt;
-            dgvStudents.Refresh();
-            con.Close();
-
-        }
-
-        private void malefemale_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
-            SqlConnection con = new SqlConnection(constr);
-            con.Open();
-            string query = "SELECT id 'ID',  name 'Student Name' ,father_name 'Father Name', class 'Class', instructedby 'Instructed_By', gender 'Gender', caste 'Caste' from student where  class = @c and gender = @g and  session is null ";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter("c", cbxclasses.SelectedItem.ToString()));
-            cmd.Parameters.Add(new SqlParameter("g", malefemale.SelectedItem.ToString()));
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgvStudents.DataSource = dt;
-            dgvStudents.Refresh();
-            con.Close();
-        }
-
-        private void checkStudentsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Student_Calculator sc = new Student_Calculator();
-            sc.ShowDialog();
-        }
-
-        private void addStaffToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Staff s = new Staff(); s.ShowDialog();
-        }
-
-        private void replaceStaffMemberToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Replace_Staff rs = new Replace_Staff();
-            rs.ShowDialog();
-        }
-
-        private void allocateStaffToClassesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AllocateStaffToClasses ac = new AllocateStaffToClasses();
-            ac.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            loadStaff();
-            setClasses();
-            setGender();
-            loadstudents();
-            loadmonths();
-            
-        }
-
-
-        private void txtnewMonth_TextChanged(object sender, EventArgs e)
-        {
-            loadAllStudents();
         }
 
         private void loadAllStudents()
@@ -516,15 +248,9 @@ namespace Fee_Management_System
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            dgvStudents.DataSource = dt;
-            dgvStudents.Refresh();
+            students_dgv.DataSource = dt;
+            students_dgv.Refresh();
             con.Close();
-        }
-
-        private void cbxMonths_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string month = cbxMonths.SelectedItem.ToString();
-            loadUnpaidStudentsByMonth(month);
         }
 
         private void loadUnpaidStudentsByMonth(string month)
@@ -538,27 +264,251 @@ namespace Fee_Management_System
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            dgvStudents.DataSource = dt;
-            dgvStudents.Refresh();
+            students_dgv.DataSource = dt;
+            students_dgv.Refresh();
             con.Close();
         }
 
-        private void dailyFeeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void search_TextChanged(object sender, EventArgs e)
         {
-            DailyFee dailyFee = new DailyFee();
-            dailyFee.ShowDialog();
+            loadDesiredData();
         }
 
-        private void monthlyFeeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void refresh_button_Click(object sender, EventArgs e)
         {
-            MonthlyFeeDetail mf = new MonthlyFeeDetail();
-            mf.ShowDialog();
+            loadStaff();
+            setClasses();
+            setGender();
+            loadUnpaidStudentsByMonth(cbxMonth.SelectedItem.ToString());
+            loadmonths();
         }
 
-        private void monthlyIncomeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void pay_button_Click(object sender, EventArgs e)
         {
-            IncomeForm i = new IncomeForm();
-            i.ShowDialog();
+            if (isvalidated())
+            {
+                string month;
+                int amount = Convert.ToInt32(txtStudentFee.Text);
+
+                // code for months
+                if (txtAddMonth.Text.Trim().Length == 0)
+                {
+                    month = cbxMonth.SelectedItem.ToString();
+                }
+                else
+                {
+                    month = txtAddMonth.Text.Trim().ToString();
+                    if (!addNewMonth(month))
+                    {
+                        MessageBox.Show("New month is not added");
+                    }
+                }
+
+
+                // code for dgv rows
+
+                foreach (DataGridViewRow dgvRow in students_dgv.Rows)
+                {
+                    if (dgvRow.Cells[0].Value != null && Convert.ToBoolean(dgvRow.Cells[0].Value))
+                    {
+                        int id = Convert.ToInt32(dgvRow.Cells[1].Value.ToString());
+                        if (isPaid(Convert.ToInt32(dgvRow.Cells[1].Value), month))
+                        {
+                            payStudentFee(id, month, amount);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void print_button_Click(object sender, EventArgs e)
+        {
+            if (isvalidated())
+            {
+                string month;
+                int amount = Convert.ToInt32(txtStudentFee.Text);
+
+                // code for months
+                if (txtAddMonth.Text.Trim().Length == 0)
+                {
+                    month = cbxMonth.SelectedItem.ToString();
+                }
+                else
+                {
+                    month = txtAddMonth.Text.Trim().ToString();
+                    if (!addNewMonth(month))
+                    {
+                        MessageBox.Show("New month is not added");
+                    }
+                }
+
+
+                // code for dgv rows
+
+                foreach (DataGridViewRow dgvRow in students_dgv.Rows)
+                {
+                    if (dgvRow.Cells[0].Value != null && Convert.ToBoolean(dgvRow.Cells[0].Value))
+                    {
+                        int id = Convert.ToInt32(dgvRow.Cells[1].Value.ToString());
+                        if (isPaid(Convert.ToInt32(dgvRow.Cells[1].Value), month))
+                        {
+                            if (Convert.ToBoolean(payStudentFee(id, month, amount)))
+                            {
+                                PrintSlipData.feeId = id;
+                                PrintSlipData.studentName = dgvRow.Cells[2].Value.ToString();
+                                PrintSlipData.fatherName = dgvRow.Cells[3].Value.ToString();
+                                PrintSlipData.studentClass = dgvRow.Cells[4].Value.ToString();
+                                PrintSlipData.feeMonth = month;
+                                PrintSlipData.amount = amount.ToString();
+
+                                SlipForm cf = new SlipForm();
+                                cf.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Some thing went wrong!");
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void txtStudentFee_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void cbxInstructor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            string query = "SELECT  name 'Student Name' ,father_name 'Father Name', class 'Class', instructedby 'Instructed_By', gender 'Gender', caste 'Caste' from student where instructedby = @instructedby  and  session is null ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.Add(new SqlParameter("instructedby", cbxInstructor.SelectedItem.ToString()));
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            students_dgv.DataSource = dt;
+            students_dgv.Refresh();
+            con.Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbxGender.SelectedIndex = 0;
+            string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            string query = "SELECT id 'ID',  name 'Student Name' ,father_name 'Father Name', class 'Class', instructedby 'Instructed_By', gender 'Gender', caste 'Caste' from student where  class = @c and gender = @g and  session is null ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.Add(new SqlParameter("c", comboBox1.SelectedItem.ToString()));
+            cmd.Parameters.Add(new SqlParameter("g", cbxGender.SelectedItem.ToString()));
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            students_dgv.DataSource = dt;
+            students_dgv.Refresh();
+            con.Close();
+        }
+
+        private void cbxGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            string query = "SELECT id 'ID',  name 'Student Name' ,father_name 'Father Name', class 'Class', instructedby 'Instructed_By', gender 'Gender', caste 'Caste' from student where  class = @c and gender = @g and  session is null ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.Add(new SqlParameter("c", comboBox1.SelectedItem.ToString()));
+            cmd.Parameters.Add(new SqlParameter("g", cbxGender.SelectedItem.ToString()));
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            students_dgv.DataSource = dt;
+            students_dgv.Refresh();
+            con.Close();
+        }
+
+        private void cbxMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadUnpaidStudentsByMonth(cbxMonth.SelectedItem.ToString());
+        }
+
+        private void txtAddMonth_TextChanged(object sender, EventArgs e)
+        {
+            loadAllStudents();
+        }
+
+        private void toolStripMenuItem15_Click(object sender, EventArgs e)
+        {
+            StudentForm sf = new StudentForm();
+            sf.ShowDialog();
+        }
+
+        private void toolStripMenuItem16_Click(object sender, EventArgs e)
+        {
+            ClassForm classForm = new ClassForm();
+            classForm.ShowDialog();
+        }
+
+        private void toolStripMenuItem12_Click(object sender, EventArgs e)
+        {
+            Student_Calculator sc = new Student_Calculator();
+            sc.ShowDialog();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Staff staff = new Staff();
+            staff.ShowDialog();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Replace_Staff rs = new Replace_Staff();
+            rs.ShowDialog();
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            AllocateStaffToClasses allocateStaff = new AllocateStaffToClasses();
+            allocateStaff.ShowDialog();
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            PaidStudents paidStudents = new PaidStudents();
+            paidStudents.ShowDialog();
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            Unpaid_Students unPaidStudents = new Unpaid_Students();
+            unPaidStudents.ShowDialog();
+        }
+
+        private void toolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            DailyFee df = new DailyFee();
+            df.ShowDialog();
+        }
+
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+            MonthlyFeeDetail monthlyFee = new MonthlyFeeDetail();
+            monthlyFee.ShowDialog();
+        }
+
+        private void toolStripMenuItem11_Click(object sender, EventArgs e)
+        {
+            IncomeForm incomeForm = new IncomeForm();
+            incomeForm.ShowDialog();
         }
     }
 }

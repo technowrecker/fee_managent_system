@@ -162,7 +162,6 @@ namespace Fee_Management_System
             studentId = dataGridView.Rows[rowindex].Cells["ID"].Value.ToString();
             studentFeeMonth = dataGridView.Rows[rowindex].Cells["Month"].Value.ToString();
 
-            MessageBox.Show(studentId + studentFeeMonth);
         }
     }
 }

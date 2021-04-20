@@ -27,3 +27,6 @@ G:\Visual Programming\Fee_Management_System\Fee_Management_System\obj\Release\Fe
 G:\Visual Programming\Fee_Management_System\Fee_Management_System\obj\Release\Fee_Management_System.exe
 G:\Visual Programming\Fee_Management_System\Fee_Management_System\obj\Release\Fee_Management_System.pdb
 G:\Visual Programming\Fee_Management_System\Fee_Management_System\obj\Release\Fee_Management_System.Expenses.resources
+G:\Visual Programming\Fee_Management_System\Fee_Management_System\bin\Release\Dapper.dll
+G:\Visual Programming\Fee_Management_System\Fee_Management_System\bin\Release\Dapper.xml
+G:\Visual Programming\Fee_Management_System\Fee_Management_System\obj\Release\Fee_Management_System.csprojResolveAssemblyReference.cache

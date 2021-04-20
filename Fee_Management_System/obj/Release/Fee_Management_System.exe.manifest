@@ -42,24 +42,36 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fee_Management_System.exe" size="164832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Dapper.dll" size="194560">
+      <assemblyIdentity name="Dapper" version="2.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Pl+eOp+p49/LBXEjHPUSpN4ZS5Rvisb1EGe4syQuLow=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fee_Management_System.exe" size="168928">
       <assemblyIdentity name="Fee_Management_System" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4ZDz99tF1knUSKwq88VTbb1ILlhxHwn/G9s54/rIqGg=</dsig:DigestValue>
+        <dsig:DigestValue>USQv/FGWdj/HlsTRoX2rbp872EEu44ofXQqe7CZM3Jw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Fee_Management_System.exe.config" size="664">
+  <file name="Fee_Management_System.exe.config" size="661">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>OacT4avS88L8b+GoU9lyjTgUsbTGqpspQthHEOIht4Y=</dsig:DigestValue>
+      <dsig:DigestValue>+rNi705jiC92J6K4HcARhU9LzxAX6RW5wzUIBQ3q+UE=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
