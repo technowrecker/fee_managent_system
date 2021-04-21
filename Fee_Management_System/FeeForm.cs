@@ -388,9 +388,7 @@ namespace Fee_Management_System
                                 try
                                 {
                                     LocalReport report = new LocalReport();
-                                    var path = Path.GetDirectoryName(Application.ExecutablePath);
-                                    var fullPath = Path.GetDirectoryName(Application.ExecutablePath).Remove(path.Length - 12) + @"\Report\report.rdlc";
-                                    report.ReportPath = fullPath;
+                                    report.ReportPath = Application.StartupPath + @"\Report\report.rdlc";
                                     report.DataSources.Add(new ReportDataSource("DataSet1", dt));
 
                                 
@@ -400,7 +398,7 @@ namespace Fee_Management_System
                                 {
                                     LocalReport report = new LocalReport();
                                     var path = Path.GetDirectoryName(Application.ExecutablePath);
-                                    var fullPath = Path.GetDirectoryName(Application.ExecutablePath).Remove(path.Length - 10) + @"\Report\report.rdlc";
+                                    var fullPath = Path.GetDirectoryName(Application.ExecutablePath).Remove(path.Length - 12) + @"\Report\report.rdlc";
                                     report.ReportPath = fullPath;
                                     report.DataSources.Add(new ReportDataSource("DataSet1", dt));
 
