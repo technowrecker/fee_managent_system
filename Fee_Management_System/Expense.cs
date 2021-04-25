@@ -10,7 +10,6 @@ namespace Fee_Management_System
     {
         public static int id { get; set; }
         public static string title { get; set; }
-        public static string date { get; set; }
         public static string month { get; set; }
         public static int expense { get; set; }
 

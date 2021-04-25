@@ -641,10 +641,20 @@ namespace Fee_Management_System
             monthlyFee.ShowDialog();
         }
 
-        private void toolStripMenuItem11_Click(object sender, EventArgs e)
+        private void monthlyIncomeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IncomeForm incomeForm = new IncomeForm();
             incomeForm.ShowDialog();
+        }
+
+        private void otherIncomeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void expenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Expenses expenses = new Expenses();
+            expenses.ShowDialog();
         }
     }
 }

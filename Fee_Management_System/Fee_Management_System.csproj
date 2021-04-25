@@ -139,6 +139,10 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="Income.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IncomeClass.cs" />
     <Compile Include="IncomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Income.resx">
+      <DependentUpon>Income.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IncomeForm.resx">
       <DependentUpon>IncomeForm.cs</DependentUpon>

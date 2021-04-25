@@ -59,7 +59,6 @@
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.search = new System.Windows.Forms.TextBox();
@@ -87,6 +86,10 @@
             this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageIncomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthlyIncomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.otherIncomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -414,8 +417,7 @@
             // 
             this.toolStripMenuItem8.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem9,
-            this.toolStripMenuItem10,
-            this.toolStripMenuItem11});
+            this.toolStripMenuItem10});
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
             this.toolStripMenuItem8.Size = new System.Drawing.Size(75, 20);
             this.toolStripMenuItem8.Text = "Fee Details";
@@ -433,13 +435,6 @@
             this.toolStripMenuItem10.Size = new System.Drawing.Size(162, 22);
             this.toolStripMenuItem10.Text = "Monthly Fee";
             this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
-            // 
-            // toolStripMenuItem11
-            // 
-            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(162, 22);
-            this.toolStripMenuItem11.Text = "Monthly Income";
-            this.toolStripMenuItem11.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
             // 
             // groupBox1
             // 
@@ -708,7 +703,8 @@
             this.toolStripMenuItem14,
             this.toolStripMenuItem1,
             this.toolStripMenuItem5,
-            this.toolStripMenuItem8});
+            this.toolStripMenuItem8,
+            this.manageIncomeToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -739,6 +735,37 @@
             this.toolStripMenuItem16.Size = new System.Drawing.Size(156, 22);
             this.toolStripMenuItem16.Text = "Update Classes";
             this.toolStripMenuItem16.Click += new System.EventHandler(this.toolStripMenuItem16_Click);
+            // 
+            // manageIncomeToolStripMenuItem
+            // 
+            this.manageIncomeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.monthlyIncomeToolStripMenuItem,
+            this.otherIncomeToolStripMenuItem,
+            this.expenseToolStripMenuItem});
+            this.manageIncomeToolStripMenuItem.Name = "manageIncomeToolStripMenuItem";
+            this.manageIncomeToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
+            this.manageIncomeToolStripMenuItem.Text = "Manage Income";
+            // 
+            // monthlyIncomeToolStripMenuItem
+            // 
+            this.monthlyIncomeToolStripMenuItem.Name = "monthlyIncomeToolStripMenuItem";
+            this.monthlyIncomeToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.monthlyIncomeToolStripMenuItem.Text = "Monthly Income";
+            this.monthlyIncomeToolStripMenuItem.Click += new System.EventHandler(this.monthlyIncomeToolStripMenuItem_Click);
+            // 
+            // otherIncomeToolStripMenuItem
+            // 
+            this.otherIncomeToolStripMenuItem.Name = "otherIncomeToolStripMenuItem";
+            this.otherIncomeToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.otherIncomeToolStripMenuItem.Text = "Other Income";
+            this.otherIncomeToolStripMenuItem.Click += new System.EventHandler(this.otherIncomeToolStripMenuItem_Click);
+            // 
+            // expenseToolStripMenuItem
+            // 
+            this.expenseToolStripMenuItem.Name = "expenseToolStripMenuItem";
+            this.expenseToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.expenseToolStripMenuItem.Text = "Expense";
+            this.expenseToolStripMenuItem.Click += new System.EventHandler(this.expenseToolStripMenuItem_Click);
             // 
             // FeeForm
             // 
@@ -811,7 +838,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox search;
@@ -839,5 +865,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
+        private System.Windows.Forms.ToolStripMenuItem manageIncomeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem monthlyIncomeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem otherIncomeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expenseToolStripMenuItem;
     }
 }
