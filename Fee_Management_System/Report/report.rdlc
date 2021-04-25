@@ -10,25 +10,23 @@
             <TextRuns>
               <TextRun>
                 <Value>Student Name :</Value>
-                <Style />
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.64111in</Top>
-        <Left>0.33556in</Left>
+        <Top>0.95361in</Top>
+        <Left>0.24876in</Left>
         <Height>0.25in</Height>
-        <Width>1.04167in</Width>
+        <Width>0.91667in</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox5">
@@ -39,26 +37,24 @@
             <TextRuns>
               <TextRun>
                 <Value>Class               :</Value>
-                <Style />
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>2.28in</Top>
-        <Left>0.33556in</Left>
+        <Top>1.45361in</Top>
+        <Left>0.24876in</Left>
         <Height>0.25in</Height>
-        <Width>1.06945in</Width>
+        <Width>0.91667in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox6">
@@ -69,26 +65,24 @@
             <TextRuns>
               <TextRun>
                 <Value>Father Name   :</Value>
-                <Style />
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.96056in</Top>
-        <Left>0.33556in</Left>
+        <Top>1.20361in</Top>
+        <Left>0.24876in</Left>
         <Height>0.25in</Height>
-        <Width>1.04167in</Width>
+        <Width>0.91667in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox7">
@@ -99,26 +93,24 @@
             <TextRuns>
               <TextRun>
                 <Value>=Fields!studentName.Value</Value>
-                <Style />
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>1.64111in</Top>
-        <Left>1.37723in</Left>
+        <Top>0.95361in</Top>
+        <Left>1.16543in</Left>
         <Height>0.25in</Height>
-        <Width>2.19792in</Width>
+        <Width>2.05902in</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox8">
@@ -129,26 +121,24 @@
             <TextRuns>
               <TextRun>
                 <Value>=Fields!fatherName.Value</Value>
-                <Style />
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>1.96056in</Top>
-        <Left>1.37723in</Left>
+        <Top>1.20361in</Top>
+        <Left>1.16543in</Left>
         <Height>0.25in</Height>
-        <Width>2.19792in</Width>
+        <Width>2.05902in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox9">
@@ -159,26 +149,24 @@
             <TextRuns>
               <TextRun>
                 <Value>=Fields!className.Value</Value>
-                <Style />
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>2.28in</Top>
-        <Left>1.40501in</Left>
+        <Top>1.45361in</Top>
+        <Left>1.19321in</Left>
         <Height>0.25in</Height>
-        <Width>2.17014in</Width>
+        <Width>2.03124in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox11">
@@ -190,6 +178,7 @@
               <TextRun>
                 <Value>The student has paid his fee Rs : </Value>
                 <Style>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -198,19 +187,15 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox11</rd:DefaultName>
-        <Top>2.88069in</Top>
-        <Left>0.26265in</Left>
+        <Top>1.7036in</Top>
+        <Left>0.24878in</Left>
         <Height>0.25in</Height>
-        <Width>2.28819in</Width>
+        <Width>2.01736in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox12">
@@ -222,6 +207,7 @@
               <TextRun>
                 <Value>=Fields!fee.Value</Value>
                 <Style>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>Underline</TextDecoration>
                 </Style>
@@ -233,8 +219,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>2.88069in</Top>
-        <Left>2.55084in</Left>
+        <Top>1.70361in</Top>
+        <Left>2.26613in</Left>
         <Height>0.25in</Height>
         <Width>0.57292in</Width>
         <ZIndex>7</ZIndex>
@@ -242,10 +228,6 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox13">
@@ -257,6 +239,7 @@
               <TextRun>
                 <Value> of </Value>
                 <Style>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -265,19 +248,15 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>2.88069in</Top>
-        <Left>3.12376in</Left>
+        <Top>1.70361in</Top>
+        <Left>2.83903in</Left>
         <Height>0.25in</Height>
-        <Width>0.4514in</Width>
+        <Width>0.38542in</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox14">
@@ -289,6 +268,7 @@
               <TextRun>
                 <Value>=Fields!feeMonth.Value</Value>
                 <Style>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>Underline</TextDecoration>
                 </Style>
@@ -300,8 +280,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>3.14458in</Top>
-        <Left>0.26265in</Left>
+        <Top>1.96749in</Top>
+        <Left>0.24878in</Left>
         <Height>0.25in</Height>
         <Width>1.11458in</Width>
         <ZIndex>9</ZIndex>
@@ -309,10 +289,6 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox15">
@@ -324,6 +300,7 @@
               <TextRun>
                 <Value> on</Value>
                 <Style>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -332,8 +309,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>3.15847in</Top>
-        <Left>1.37723in</Left>
+        <Top>1.9536in</Top>
+        <Left>1.36336in</Left>
         <Height>0.25in</Height>
         <Width>0.30209in</Width>
         <ZIndex>10</ZIndex>
@@ -341,10 +318,6 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox16">
@@ -356,6 +329,7 @@
               <TextRun>
                 <Value>=Fields!date.Value</Value>
                 <Style>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>Underline</TextDecoration>
                 </Style>
@@ -367,19 +341,15 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>3.15847in</Top>
-        <Left>1.67932in</Left>
+        <Top>1.9536in</Top>
+        <Left>1.66545in</Left>
         <Height>0.25in</Height>
-        <Width>1.71874in</Width>
+        <Width>1.55902in</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox17">
@@ -391,7 +361,7 @@
               <TextRun>
                 <Value>Enter to Learn, Leave to Serve</Value>
                 <Style>
-                  <FontWeight>Bold</FontWeight>
+                  <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -401,19 +371,15 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>3.79736in</Top>
-        <Left>0.405in</Left>
+        <Top>2.28694in</Top>
+        <Left>0.24877in</Left>
         <Height>0.30208in</Height>
-        <Width>2.71876in</Width>
+        <Width>2.64013in</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox1">
@@ -425,31 +391,30 @@
               <TextRun>
                 <Value>Invoice_ID</Value>
                 <Style>
+                  <FontSize>8pt</FontSize>
                   <TextDecoration>Underline</TextDecoration>
                 </Style>
               </TextRun>
               <TextRun>
                 <Value> :</Value>
-                <Style />
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.42236in</Top>
-        <Left>0.26265in</Left>
+        <Top>0.21403in</Top>
+        <Left>0.24876in</Left>
         <Height>0.25in</Height>
-        <Width>0.80903in</Width>
+        <Width>0.67013in</Width>
         <ZIndex>13</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox2">
@@ -460,26 +425,26 @@
             <TextRuns>
               <TextRun>
                 <Value>=Fields!id.Value</Value>
-                <Style />
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>0.42236in</Top>
-        <Left>1.07167in</Left>
+        <Top>0.21403in</Top>
+        <Left>0.97444in</Left>
         <Height>0.25in</Height>
-        <Width>0.60417in</Width>
+        <Width>0.6875in</Width>
         <ZIndex>14</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox3">
@@ -489,9 +454,8 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Khursheed Public Boys &amp; Girls Higher Secondary School Dibbi Shah</Value>
+                <Value>Khursheed Public Boys &amp; Girls Higher  school Dibbi Shah</Value>
                 <Style>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -502,26 +466,22 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>0.90153in</Top>
-        <Left>0.26265in</Left>
+        <Top>0.46403in</Top>
+        <Left>0.24877in</Left>
         <Height>0.48958in</Height>
-        <Width>3.3125in</Width>
+        <Width>2.8611in</Width>
         <ZIndex>15</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.94319in</Height>
+    <Height>2.99527in</Height>
     <Style />
   </Body>
-  <Width>3.99417in</Width>
+  <Width>3.33792in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>

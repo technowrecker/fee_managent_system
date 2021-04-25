@@ -434,8 +434,8 @@ namespace Fee_Management_System
             string deviceInfo =
              @"<DeviceInfo>
                 <OutputFormat>EMF</OutputFormat>
-                <PageWidth>4in</PageWidth>
-                <PageHeight>5.5in</PageHeight>
+                <PageWidth>3.5in</PageWidth>
+                <PageHeight>3in</PageHeight>
                 <MarginTop>0in</MarginTop>
                 <MarginLeft>0in</MarginLeft>
                 <MarginRight>0in</MarginRight>

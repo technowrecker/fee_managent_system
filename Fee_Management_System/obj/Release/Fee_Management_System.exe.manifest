@@ -69,14 +69,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fee_Management_System.exe" size="215520">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fee_Management_System.exe" size="213472">
       <assemblyIdentity name="Fee_Management_System" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>X5JG2254pTM6ZOfhutIj/SS4ZajMe2uAr+gGdjfojjw=</dsig:DigestValue>
+        <dsig:DigestValue>z/GqczHRYaMoPVayaw/2ZiLOniJLmZD78kVvJh/oNPk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
