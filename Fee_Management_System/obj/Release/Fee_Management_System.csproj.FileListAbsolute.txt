@@ -43,5 +43,4 @@ G:\Visual Programming\Fee_Management_System\Fee_Management_System\bin\Release\pt
 G:\Visual Programming\Fee_Management_System\Fee_Management_System\bin\Release\ru\Microsoft.SqlServer.Types.resources.dll
 G:\Visual Programming\Fee_Management_System\Fee_Management_System\bin\Release\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 G:\Visual Programming\Fee_Management_System\Fee_Management_System\bin\Release\zh-Hant\Microsoft.SqlServer.Types.resources.dll
-G:\Visual Programming\Fee_Management_System\Fee_Management_System\obj\Release\Fee_Management_System.csprojResolveAssemblyReference.cache
 G:\Visual Programming\Fee_Management_System\Fee_Management_System\obj\Release\Fee_Management_System.Income.resources
