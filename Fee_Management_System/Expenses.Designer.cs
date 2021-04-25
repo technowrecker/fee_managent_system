@@ -48,7 +48,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(209, 45);
+            this.label1.Location = new System.Drawing.Point(132, 28);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 24);
@@ -58,16 +58,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(142, 113);
+            this.label2.Location = new System.Drawing.Point(53, 91);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 17);
+            this.label2.Size = new System.Drawing.Size(33, 17);
             this.label2.TabIndex = 0;
-            this.label2.Text = "ID";
+            this.label2.Text = "ID : ";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(213, 110);
+            this.txtId.Location = new System.Drawing.Point(136, 88);
             this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
@@ -77,52 +77,52 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(142, 160);
+            this.label3.Location = new System.Drawing.Point(53, 128);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 17);
+            this.label3.Size = new System.Drawing.Size(59, 17);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Month";
+            this.label3.Text = "Month : ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(142, 212);
+            this.label4.Location = new System.Drawing.Point(53, 169);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 17);
+            this.label4.Size = new System.Drawing.Size(47, 17);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Title";
+            this.label4.Text = "Title : ";
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(213, 209);
+            this.txtTitle.Location = new System.Drawing.Point(136, 166);
             this.txtTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(252, 23);
+            this.txtTitle.Size = new System.Drawing.Size(263, 23);
             this.txtTitle.TabIndex = 0;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(142, 254);
+            this.label5.Location = new System.Drawing.Point(53, 205);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 17);
+            this.label5.Size = new System.Drawing.Size(74, 17);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Expense";
+            this.label5.Text = "Expense : ";
             // 
             // txtExpense
             // 
-            this.txtExpense.Location = new System.Drawing.Point(213, 251);
+            this.txtExpense.Location = new System.Drawing.Point(136, 202);
             this.txtExpense.Margin = new System.Windows.Forms.Padding(4);
             this.txtExpense.Name = "txtExpense";
-            this.txtExpense.Size = new System.Drawing.Size(252, 23);
+            this.txtExpense.Size = new System.Drawing.Size(263, 23);
             this.txtExpense.TabIndex = 1;
             // 
             // btnAddExpense
             // 
-            this.btnAddExpense.Location = new System.Drawing.Point(104, 311);
+            this.btnAddExpense.Location = new System.Drawing.Point(27, 250);
             this.btnAddExpense.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddExpense.Name = "btnAddExpense";
             this.btnAddExpense.Size = new System.Drawing.Size(100, 28);
@@ -133,7 +133,7 @@
             // 
             // btnUpdateExpense
             // 
-            this.btnUpdateExpense.Location = new System.Drawing.Point(213, 311);
+            this.btnUpdateExpense.Location = new System.Drawing.Point(135, 250);
             this.btnUpdateExpense.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateExpense.Name = "btnUpdateExpense";
             this.btnUpdateExpense.Size = new System.Drawing.Size(100, 28);
@@ -144,7 +144,7 @@
             // 
             // btnDeleteExpense
             // 
-            this.btnDeleteExpense.Location = new System.Drawing.Point(321, 311);
+            this.btnDeleteExpense.Location = new System.Drawing.Point(243, 250);
             this.btnDeleteExpense.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteExpense.Name = "btnDeleteExpense";
             this.btnDeleteExpense.Size = new System.Drawing.Size(100, 28);
@@ -155,7 +155,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(429, 311);
+            this.btnReset.Location = new System.Drawing.Point(351, 250);
             this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(100, 28);
@@ -167,16 +167,16 @@
             // cbxMonths
             // 
             this.cbxMonths.FormattingEnabled = true;
-            this.cbxMonths.Location = new System.Drawing.Point(213, 157);
+            this.cbxMonths.Location = new System.Drawing.Point(136, 125);
             this.cbxMonths.Name = "cbxMonths";
-            this.cbxMonths.Size = new System.Drawing.Size(252, 24);
+            this.cbxMonths.Size = new System.Drawing.Size(263, 24);
             this.cbxMonths.TabIndex = 7;
             // 
             // Expenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 389);
+            this.ClientSize = new System.Drawing.Size(488, 330);
             this.Controls.Add(this.cbxMonths);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnDeleteExpense);

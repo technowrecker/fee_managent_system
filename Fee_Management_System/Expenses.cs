@@ -19,6 +19,14 @@ namespace Fee_Management_System
             InitializeComponent();
         }
 
+        string _month = "";
+
+        public Expenses(string month)
+        {
+            InitializeComponent();
+            _month = month;
+        }
+
         private void Expenses_Load(object sender, EventArgs e)
         {
             reset();
@@ -29,6 +37,11 @@ namespace Fee_Management_System
                 cbxMonths.Text = Expense.month;
                 txtTitle.Text = Expense.title;
                 txtExpense.Text = Expense.expense.ToString();
+            }
+
+            if(_month != "")
+            {
+                cbxMonths.Text = _month;
             }
         }
 
@@ -102,19 +115,21 @@ namespace Fee_Management_System
         {
             if(cbxMonths.SelectedItem.ToString() == "")
             {
-                MessageBox.Show("Invalid Date", "Please provide a valid month");
+                MessageBox.Show( "Please provide a valid month", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             if (txtTitle.Text.ToString().Trim() == "")
             {
-                MessageBox.Show("Invalid Title", "Please provide a valid Title");
+                MessageBox.Show("Please provide a valid Title", "Invalid Title", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTitle.Focus();
                 return false;
             }
 
             if (txtExpense.Text.ToString().Trim() == "")
             {
-                MessageBox.Show("Invalid Expense", "Please provide a valid Expense");
+                MessageBox.Show( "Please provide a valid Expense", "Invalid Expense", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtExpense.Focus();
                 return false;
             }
 
@@ -131,19 +146,23 @@ namespace Fee_Management_System
 
         private void updateExpense()
         {
-            string date = DateTime.Now.ToShortDateString();
-            string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
-            SqlConnection con = new SqlConnection(constr);
-            con.Open();
-            string query = "UPDATE expense set date = @date, title = @title, expense = @expense ";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter("date", date));
-            cmd.Parameters.Add(new SqlParameter("title", txtTitle.Text.ToString().Trim()));
-            cmd.Parameters.Add(new SqlParameter("expense", txtExpense.Text.ToString().Trim()));
-            cmd.Parameters.Add(new SqlParameter("month", cbxMonths.SelectedItem.ToString().Trim()));
-            Boolean id = Convert.ToBoolean(cmd.ExecuteNonQuery());
-            showMessage(id, "updated");
-            con.Close();
+            if(txtId.Text.ToString() != "")
+            {
+                string date = DateTime.Now.ToShortDateString();
+                string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
+                SqlConnection con = new SqlConnection(constr);
+                con.Open();
+                string query = "UPDATE expense set date = @date, title = @title, expense = @expense where id = @id ";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(new SqlParameter("date", date));
+                cmd.Parameters.Add(new SqlParameter("title", txtTitle.Text.ToString().Trim()));
+                cmd.Parameters.Add(new SqlParameter("expense", txtExpense.Text.ToString().Trim()));
+                cmd.Parameters.Add(new SqlParameter("month", cbxMonths.SelectedItem.ToString().Trim()));
+                cmd.Parameters.Add(new SqlParameter("id", txtId.Text.ToString().Trim()));
+                Boolean id = Convert.ToBoolean(cmd.ExecuteNonQuery());
+                showMessage(id, "updated");
+                con.Close();
+            }
         }
 
         private void btnDeleteExpense_Click(object sender, EventArgs e)
@@ -156,15 +175,18 @@ namespace Fee_Management_System
 
         private void deleteExpense()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
-            SqlConnection con = new SqlConnection(constr);
-            con.Open();
-            string query = "DELETE FROM expense where id = @id";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.Add(new SqlParameter("id", txtId.Text.ToString()));
-            Boolean id = Convert.ToBoolean(cmd.ExecuteNonQuery());
-            showMessage(id, "deleted");
-            con.Close();
+            if(txtId.Text.ToString() != "")
+            {
+                string constr = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
+                SqlConnection con = new SqlConnection(constr);
+                con.Open();
+                string query = "DELETE FROM expense where id = @id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add(new SqlParameter("id", txtId.Text.ToString()));
+                Boolean id = Convert.ToBoolean(cmd.ExecuteNonQuery());
+                showMessage(id, "deleted");
+                con.Close();
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)

@@ -557,8 +557,28 @@ namespace Fee_Management_System
 
         private void monthlyIncomeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void monthlyIncomeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             IncomeForm i = new IncomeForm();
             i.ShowDialog();
+        }
+
+        private void addIncomeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IncomeClass.incomeTitle = "";
+
+            Income income = new Income();
+            income.ShowDialog();
+        }
+
+        private void manageExpensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Expense.title = "";
+
+            Expenses expenses = new Expenses();
+            expenses.ShowDialog();
         }
     }
 }
