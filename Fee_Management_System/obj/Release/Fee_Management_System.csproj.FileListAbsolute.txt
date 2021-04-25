@@ -34,7 +34,6 @@ C:\Users\rashi\OneDrive\Desktop\fee_managent_system\Fee_Management_System\bin\Re
 C:\Users\rashi\OneDrive\Desktop\fee_managent_system\Fee_Management_System\bin\Release\Fee_Management_System.application
 C:\Users\rashi\OneDrive\Desktop\fee_managent_system\Fee_Management_System\bin\Release\Fee_Management_System.exe
 C:\Users\rashi\OneDrive\Desktop\fee_managent_system\Fee_Management_System\bin\Release\Fee_Management_System.pdb
-C:\Users\rashi\OneDrive\Desktop\fee_managent_system\Fee_Management_System\obj\Release\Fee_Management_System.csprojResolveAssemblyReference.cache
 C:\Users\rashi\OneDrive\Desktop\fee_managent_system\Fee_Management_System\obj\Release\Fee_Management_System.AllocateStaffToClasses.resources
 C:\Users\rashi\OneDrive\Desktop\fee_managent_system\Fee_Management_System\obj\Release\Fee_Management_System.ClassForm.resources
 C:\Users\rashi\OneDrive\Desktop\fee_managent_system\Fee_Management_System\obj\Release\Fee_Management_System.DailyFee.resources
